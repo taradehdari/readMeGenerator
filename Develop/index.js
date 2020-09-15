@@ -1,4 +1,6 @@
-const questions = [
+const inquirer = require('inquirer');
+const fs = require ('fs');
+inquirer.prompt([
     {
         type: 'input',
         name: 'title',
@@ -8,17 +10,17 @@ const questions = [
         type: 'input',
         name: 'Description',
         message: 'Describe your project',
-    }
+    },
     {
         type: 'input',
         name: 'Installation',
         message: 'What are the steps required for Installation of your project',
-    }
+    },
     {
         type: 'input',
         name: 'Usage',
         message: 'What are the instructions for your project',
-    }
+    },
     {
         type: 'list',
         name: 'license',
@@ -29,27 +31,27 @@ const questions = [
             "BSD 3",
             "None",
         ]
-    }
+    },
     {
         type:'input',
         name: 'contributors',
         message:'Who helped contribute?',
-    }
+    },
     {
         type: 'input',
         name: 'test',
         message: 'How do you test your project?',
-    }
+    },
     {
         type: 'input',
         name: 'Questions',
         message: 'Contact information for any further questions',
-    }
+    },
     {
         type: 'input',
         name: 'username',
         message: 'What is your Github username',
-    }
+    },
     {
         type: 'input',
         name: 'email',
@@ -57,7 +59,15 @@ const questions = [
     }
     
 
-];
+]).then(answers => {
+    fs.writeFile(`${answers.title}.json`, JSON.stringify(answers, null, 2), (err) => {
+        if (err) {
+            throw new Error(err);
+
+        }
+        console.log('created ReadME');
+    });
+});
 
 function writeToFile(fileName, data) {
 }
