@@ -14,7 +14,7 @@ ${data.description}
 * [Usage](#usage)
 * [License](#license)
 * [Contributors](#contributors)
-* [Tests](#test)
+* [Tests](#tests)
 * [Questions](#questions)
 
 ## Installation
@@ -30,7 +30,7 @@ This project is licensed under ${data.license}.
   ${data.contributor}
 
 ## Tests
-To run tests, you need to run the following command: ${data.test}
+To run tests, you need to run the following command: ${data.tests}
 
 ## Questions
 If you have any questions about the repo, open an issue or contact me directly at ${data.email}.
