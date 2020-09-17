@@ -1,6 +1,20 @@
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const axios = require('axios');
+const generatorMarkdown = require("./utils/generateMarkdown");
+const api = require('./utils/api');
+
 inquirer.prompt([
+    {
+        type: 'input',
+        name: 'username',
+        message: 'What is your Github username',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your github email?'
+    },
     {
         type: 'input',
         name: 'title',
@@ -13,12 +27,12 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        name: 'Installation',
+        name: 'installation',
         message: 'What are the steps required for Installation of your project',
     },
     {
         type: 'input',
-        name: 'Usage',
+        name: 'usage',
         message: 'What are the instructions for your project',
     },
     {
@@ -44,35 +58,38 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        name: 'Questions',
+        name: 'questions',
         message: 'Contact information for any further questions',
-    },
-    {
-        type: 'input',
-        name: 'username',
-        message: 'What is your Github username',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'What is your github email?'
     }
-    
 
-]).then(answers => {
-    fs.writeFile(`${answers.title}.json`, JSON.stringify(answers, null, 2), (err) => {
-        if (err) {
-            throw new Error(err);
 
-        }
-        console.log('created ReadME');
-    });
-});
+]);
+// .then(answers => {
+//     fs.writeFile(`${answers.title}.json`, JSON.stringify(answers, null, 2), (err) => {
+//         if (err) {
+//             throw new Error(err);
+
+//         }
+//         console.log('created ReadMe of' + fileName);
+//     });
+// });
 
 function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function (err){
+        if (err) {
+            throw new Error(err);
+        }
+        console.log('created' + fileName);
+    })
 }
 
 function init() {
+    inquirer.prompt(questions)
+    .then(function (gitData) {
+        writeToFile("README.md", generatorMarkdown(data,gitData));
+        console.log(gitData);
+        console.log(data);
+    })
 
 }
 
