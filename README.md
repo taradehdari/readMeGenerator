@@ -35,4 +35,4 @@ To run tests, you need to run the following command: node index.js
 If you have any questions about the repo, open an issue or contact me directly at tara.dehdari@gmail.com.
 
 ## Gif Video
-<img src="READMEGIF.gif">
+<img src="./Develop/READMEGIF.gif">
