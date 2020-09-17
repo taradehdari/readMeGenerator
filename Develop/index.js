@@ -32,7 +32,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'What can your app be used for',
+        message: 'This applications is used for..',
     },
     {
         type: 'list',
@@ -54,25 +54,20 @@ const questions = [
     {
         type: 'input',
         name: 'test',
-        message: 'How do you test your project?',
+        message: 'What command needs to be run to test your project?',
     }
-    // {
-    //     type: 'input',
-    //     name: 'questions',
-    //     message: 'Contact information for any further questions',
-    // }
-
 
 ];
-// .then(answers => {
-//     fs.writeFile(`${answers.title}.json`, JSON.stringify(answers, null, 2), (err) => {
-//         if (err) {
-//             throw new Error(err);
 
-//         }
-//         console.log('created ReadMe of' + fileName);
-//     });
-// });
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function (err) {
+      if (err) {
+        throw new Error(err);
+      }
+      console.log('Success! Created:' + fileName );
+    })
+  }
+  
 
 function init() {
     inquirer.prompt(questions)
